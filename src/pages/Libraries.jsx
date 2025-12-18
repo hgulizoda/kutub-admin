@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import {
   Box,
   Button,
+  Center,
   Flex,
   Grid,
   Group,
+  Loader,
   Stack,
   Text,
   TextInput,
@@ -19,7 +21,7 @@ const Libraries = () => {
   const { colorScheme } = useColorScheme();
   const [filtered, setFiltered] = useState([]);
   const [filter, setFilter] = useState("all");
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["libraries"],
     queryFn: async () => {
       const res = await API.get("/libraries/libraries/");
@@ -42,6 +44,12 @@ const Libraries = () => {
     }
   }, [data, filter]);
 
+  if (isLoading)
+    return (
+      <Center style={{ height: "100vh" }}>
+        <Loader size="xl" variant="dots" />
+      </Center>
+    );
   return (
     <Stack>
       <Box

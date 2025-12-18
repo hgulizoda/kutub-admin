@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Grid, Pagination } from "@mantine/core";
+import { Center, Grid, Loader, Pagination } from "@mantine/core";
 import API from "../api/api";
 import BooksCardGrid from "../components/BookGridCard";
 
@@ -10,7 +10,7 @@ const Books = () => {
   const start = (page - 1) * limit;
   const end = start + limit;
 
-  const { data: books = [] } = useQuery({
+  const { data: books = [], isLoading } = useQuery({
     queryKey: ["books"],
     queryFn: async () => {
       const res = await API.get("/books/books/");
@@ -19,7 +19,12 @@ const Books = () => {
   });
 
   const paginatedBooks = books?.slice(start, end);
-
+  if (isLoading)
+    return (
+      <Center style={{ height: "100vh" }}>
+        <Loader size="xl" variant="dots" />
+      </Center>
+    );
   return (
     <>
       <Grid style={{ justifySelf: "center" }}>
