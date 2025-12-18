@@ -2,8 +2,14 @@ import { Card, Group, Image, Rating, Stack, Text } from "@mantine/core";
 import { bookImages } from "../constants/books";
 import { Link } from "react-router-dom";
 import { IconHeart } from "@tabler/icons-react";
+import useSavedStore from "../store/useSavedStore";
 
-const BooksCardGrid = ({ author, name, publisher, id }) => {
+const BooksCardGrid = (book) => {
+  const { toggleSaved, saved } = useSavedStore();
+  const isSaved = saved?.some((save) => save.id === book.id);
+  console.log(isSaved);
+  console.log(saved);
+
   return (
     <Card
       p="md"
@@ -12,7 +18,7 @@ const BooksCardGrid = ({ author, name, publisher, id }) => {
       bg="transparent"
       mx="sm"
       component={Link}
-      to={`/books/${id}`}
+      to={`/books/${book.id}`}
       sx={{
         transition: "transform 0.2s",
         "&:hover": { transform: "scale(1.03)" },
@@ -20,23 +26,36 @@ const BooksCardGrid = ({ author, name, publisher, id }) => {
     >
       <Card.Section>
         <div style={{ position: "absolute", top: "10px", right: "20px" }}>
-          <IconHeart size={24} stroke={1.5} />
+          <IconHeart
+            size={24}
+            stroke={1.5}
+            onClick={(e) => {
+              e.preventDefault();
+              toggleSaved(book);
+            }}
+            fill={isSaved ? "red" : "transparent"}
+            color={isSaved ? "red" : "black"}
+          />
         </div>
-        <Image src={bookImages[Math.floor(id % 7)]} height={300} alt={name} />
+        <Image
+          src={bookImages[Math.floor(book.id % 7)]}
+          height={300}
+          alt={name}
+        />
       </Card.Section>
 
       <Group direction="column" spacing="xs" mt="sm" gap="0">
         <Stack gap="5px">
           <Text fw={700} fz="lg" lineClamp={2}>
-            {name}
+            {book.name}
           </Text>
           <Text fz="sm" my="5px 0" td="italic">
-            {author}
+            {book.author}
           </Text>
           <Text fz="sm" my="0">
-            Nashriyot: {publisher}
+            Nashriyot: {book.publisher}
           </Text>
-          <Rating value={Math.floor(id % 5) + 1} fractions={2} readOnly />
+          <Rating value={Math.floor(book.id % 5) + 1} fractions={2} readOnly />
         </Stack>
       </Group>
     </Card>

@@ -103,7 +103,7 @@ const Libraries = () => {
 
       <Grid>
         {filtered.map((item) => (
-          <Grid.Col span={2.9} h={400}>
+          <Grid.Col span={2.6} h={400} m={7}>
             <LibraryCard key={item.id} {...item} />
           </Grid.Col>
         ))}

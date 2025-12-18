@@ -18,8 +18,6 @@ const Books = () => {
     },
   });
 
-  console.log(books);
-
   const paginatedBooks = books?.slice(start, end);
 
   return (

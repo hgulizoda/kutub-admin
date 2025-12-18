@@ -33,7 +33,7 @@ const theme = createTheme({
     },
     box2: {
       light: "#9CA089",
-      dark: "#6C6D74",
+      dark: "#464747ff",
     },
     box3: {
       light: "#868B6B",

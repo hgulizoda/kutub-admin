@@ -26,7 +26,6 @@ const menuItems = [
   { icon: IconLayoutDashboardFilled, label: "Dashboard", to: "/" },
   { icon: IconBooks, label: "Libraries", to: "/libraries" },
   { icon: IconBook, label: "Books", to: "/books" },
-  { icon: IconMessage, label: "Messages", to: "/messages" },
   { icon: IconNote, label: "Notes", to: "/notes" },
   { icon: IconPin, label: "Saved", to: "/saved" },
   { icon: IconSettings, label: "Settings", to: "/settings" },

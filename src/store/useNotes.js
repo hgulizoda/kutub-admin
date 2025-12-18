@@ -28,6 +28,16 @@ const useNotesStore = create((set) => ({
       return { notes: updatedNotes };
     }),
 
+  checkNote: (newNote) =>
+    set((state) => {
+      const updatedNotes = state.notes.map((note) =>
+        note.id === newNote.id ? { ...note, isDone: !note.isDone } : note
+      );
+
+      localStorage.setItem("notes", JSON.stringify(updatedNotes));
+      return { notes: updatedNotes };
+    }),
+
   deleteNote: (noteId) =>
     set((state) => {
       const updatedNotes = state.notes.filter((note) => note.id !== noteId);

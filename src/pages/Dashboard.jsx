@@ -50,7 +50,7 @@ const Dashboard = () => {
   return (
     <>
       <Grid w={"100%"} gap={30}>
-        <Grid.Col span={5} component={Link} to={"/books"} ml={30}>
+        <Grid.Col span={5} component={Link} to={"/books"} ml={60}>
           <ScrollArea
             w={"100%"}
             h={300}
@@ -105,7 +105,7 @@ const Dashboard = () => {
         <Grid.Col
           span={5}
           bg={theme.other.box3[colorScheme]}
-          ml={70}
+          ml={40}
           style={{ padding: "30px 40px", borderRadius: "30px" }}
           pos={"relative"}
         >
@@ -175,7 +175,7 @@ const Dashboard = () => {
           h={350}
           mb={50}
           mt={20}
-          ml={30}
+          ml={40}
           component={Link}
           to="/libraries"
         >

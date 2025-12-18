@@ -29,7 +29,7 @@ function LibraryCard(lib) {
     mutationFn: async (id) => {
       return API.patch(`/libraries/library/deactivate/${id}/`);
     },
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries(["libraries"]);
       showNotification({
         title: "Library Activated",
@@ -92,7 +92,6 @@ function LibraryCard(lib) {
         <Text c={"white"} fw={700} fz={20}>
           {lib.name}
         </Text>
-        <Rating value={lib.id % 5} readOnly />
         <Text c={"white"}>{lib.address.slice(0, 30)}...</Text>
       </Box>
       <Text
