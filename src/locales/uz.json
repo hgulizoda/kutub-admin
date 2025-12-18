@@ -1,0 +1,57 @@
+{
+  "aside": {
+    "dashboard": "Boshqaruv paneli",
+    "libraries": "Kutubxonalar",
+    "books": "Kitoblar",
+    "notes": "Eslatmalar",
+    "saved": "Saqlanganlar",
+    "settings": "Sozlamalar",
+    "logOut": "Chiqish"
+  },
+  "dashboard": {
+    "mostReadBooks": "Eng ko'p o'qilgan kitoblar",
+    "haveAGoodDay": "Kuningiz yaxshi o'tsin",
+    "mostPopularLibraries": "Eng mashhur kutubxonalar",
+    "myNotes": "Mening eslatmalarim",
+    "active": "faol",
+    "inactive": "faol emas",
+    "read": "marta o'qilgan"
+  },
+  "libraries": {
+    "title": "Kutubxonalar",
+    "all": "Hammasi",
+    "active": "Faol",
+    "inactive": "Nofaol",
+    "activate": "Faollashtirish",
+    "deactivate": "Faolsizlantirish"
+  },
+  "other": {
+    "noData": "Ma'lumot topilmadi"
+  },
+  "editProfile": {
+    "title": "Profilni tahrirlash",
+    "subtitle": "Quyida ma'lumotlaringizni kiriting",
+    "nameLabel": "Ism",
+    "phoneLabel": "Telefon",
+    "saveButton": "Saqlash"
+  },
+  "addNoteModal": {
+    "title": "Yangi eslatma qo'shish",
+    "noteLabel": "Eslatma matni",
+    "notePlaceholder": "Eslatmani bu yerga yozing...",
+    "importanceLabel": "Muhimligi",
+    "importanceHigh": "Yuqori",
+    "importanceMedium": "O‘rta",
+    "importanceLow": "Past",
+    "cancelButton": "Bekor qilish",
+    "saveButton": "Saqlash",
+    "addButton": "Eslatma qo'shish"
+  },
+  "notesPage": {
+    "title": "Mening eslatmalarim",
+    "addButton": "Eslatma qo'shish",
+    "total": "Jami: ",
+    "tasks": "vazifalar",
+    "efficiency": "Samaradorlik: "
+  }
+}

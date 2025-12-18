@@ -16,11 +16,13 @@ import {
 import theme from "../style/theme";
 import { useColorScheme } from "@mantine/hooks";
 import LibraryCard from "../components/LibraryGridCard";
+import { useTranslation } from "react-i18next";
 
 const Libraries = () => {
   const { colorScheme } = useColorScheme();
   const [filtered, setFiltered] = useState([]);
   const [filter, setFilter] = useState("all");
+  const { t } = useTranslation();
   const { data, isLoading } = useQuery({
     queryKey: ["libraries"],
     queryFn: async () => {
@@ -60,7 +62,7 @@ const Libraries = () => {
         }}
       >
         <Text fz={"h2"} mb={20}>
-          Libraries
+          {t("libraries.title")}
         </Text>
         <Flex justify={"space-between"}>
           <Group spacing={-2}>
@@ -76,7 +78,7 @@ const Libraries = () => {
                 minWidth: 60,
               }}
             >
-              All
+              {t("libraries.all")}
             </Button>
             <Button
               variant={filter === "active" ? "filled" : "outline"}
@@ -89,7 +91,7 @@ const Libraries = () => {
                 minWidth: 70,
               }}
             >
-              Active
+              {t("libraries.active")}
             </Button>
             <Button
               variant={filter === "inactive" ? "filled" : "outline"}
@@ -103,7 +105,7 @@ const Libraries = () => {
                 minWidth: 80,
               }}
             >
-              Inactive
+              {t("libraries.inactive")}
             </Button>
           </Group>
         </Flex>

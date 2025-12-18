@@ -6,11 +6,17 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import { IconLanguage, IconMoon, IconSun } from "@tabler/icons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const [language, setLanguage] = useState("en");
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language]);
   return (
     <Flex
       pos={"absolute"}

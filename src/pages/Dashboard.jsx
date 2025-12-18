@@ -25,11 +25,13 @@ import { IconMoodSmileBeam } from "@tabler/icons-react";
 import useNotesStore from "../store/useNotes";
 import NoteCard from "../components/NotesCard";
 import libraryImages from "../constants/libraries";
+import { useTranslation } from "react-i18next";
 const Dashboard = () => {
   const theme = useMantineTheme();
   const { colorScheme } = useMantineColorScheme();
   const { notes } = useNotesStore();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const { data: books, isFetching } = useQuery({
     queryKey: ["books"],
@@ -49,7 +51,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Grid w={"100%"} gap={30}>
+      <Grid w={"100%"} gap={30} style={{ scrollbarWidth: "0" }}>
         <Grid.Col
           span={5}
           component={Link}
@@ -64,7 +66,7 @@ const Dashboard = () => {
           }}
         >
           <Text c={"#0f0e0eff"} fz={"h3"} mb={20}>
-            Most read books
+            {t("dashboard.mostReadBooks")}
           </Text>
           {isFetching ? (
             <Center style={{ height: "100%", width: "100%" }}>
@@ -107,7 +109,7 @@ const Dashboard = () => {
                           style={{ padding: "5px 20px", borderRadius: "20px" }}
                           fz={15}
                         >
-                          {book.quantity_in_library * 100} read
+                          {book.quantity_in_library * 100} {t("dashboard.read")}
                         </Text>
                       </Group>
                     </Card>
@@ -139,7 +141,7 @@ const Dashboard = () => {
             }}
           >
             <IconMoodSmileBeam color="white" />
-            <Text c={"white"}>Have a good day</Text>
+            <Text c={"white"}> {t("dashboard.haveAGoodDay")}</Text>
           </Box>
 
           <Calendar
@@ -196,7 +198,7 @@ const Dashboard = () => {
           to="/libraries"
         >
           <Text c={"#0f0e0eff"} fz={"h3"} mb={20}>
-            Most popular Libraries
+            {t("dashboard.mostPopularLibraries")}
           </Text>
           {isFetchingLIb ? (
             <Center style={{ height: "100%", width: "100%" }}>
@@ -277,7 +279,7 @@ const Dashboard = () => {
           to="/notes"
         >
           <Text c={"#0f0e0eff"} fz={"h3"} mb={20}>
-            My notes
+            {t("dashboard.myNotes")}
           </Text>
           <ScrollArea gap={0}>
             {notes

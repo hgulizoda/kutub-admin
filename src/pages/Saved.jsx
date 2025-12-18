@@ -2,9 +2,11 @@ import { Center, Grid, Text } from "@mantine/core";
 import React from "react";
 import useSavedStore from "../store/useSavedStore";
 import BooksCardGrid from "../components/BookGridCard";
+import { useTranslation } from "react-i18next";
 
 const Saved = () => {
   const { saved } = useSavedStore();
+  const { t } = useTranslation();
   return (
     <>
       {saved.length ? (
@@ -16,7 +18,7 @@ const Saved = () => {
       ) : (
         <Center mt={200}>
           <Text fz={"h1"} c="dimmed">
-            You have no saved books yet
+            {t("other.noData")}
           </Text>
         </Center>
       )}

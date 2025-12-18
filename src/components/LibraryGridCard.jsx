@@ -22,9 +22,11 @@ import API from "../api/api";
 import queryClient from "../api/query";
 import { useState } from "react";
 import { showNotification } from "@mantine/notifications";
+import { useTranslation } from "react-i18next";
 
 function LibraryCard(lib) {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
   const deactivate = useMutation({
     mutationFn: async (id) => {
       return API.patch(`/libraries/library/deactivate/${id}/`);
@@ -102,7 +104,7 @@ function LibraryCard(lib) {
         c={"white"}
         style={{ padding: "3px 10px", borderRadius: "10px" }}
       >
-        {lib.is_active ? "active" : "inactive"}
+        {lib.is_active ? t("libraries.active") : t("libraries.inactive")}
       </Text>
       <Button
         onClick={handleOpen}
@@ -134,7 +136,7 @@ function LibraryCard(lib) {
               : handleActivate(e, lib.id)
           }
         >
-          {lib.is_active ? "Deactivate" : "Activate"}
+          {lib.is_active ? t("libraries.deactivate") : t("libraries.activate")}
         </Button>
       ) : (
         ""

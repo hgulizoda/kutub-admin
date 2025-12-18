@@ -21,21 +21,21 @@ import {
 } from "@tabler/icons-react";
 import { Link, NavLink } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
-
-const menuItems = [
-  { icon: IconLayoutDashboardFilled, label: "Dashboard", to: "/" },
-  { icon: IconBooks, label: "Libraries", to: "/libraries" },
-  { icon: IconBook, label: "Books", to: "/books" },
-  { icon: IconNote, label: "Notes", to: "/notes" },
-  { icon: IconPin, label: "Saved", to: "/saved" },
-  { icon: IconSettings, label: "Settings", to: "/settings" },
-];
+import { useTranslation } from "react-i18next";
 
 const Aside = () => {
+  const { t } = useTranslation();
   const theme = useMantineTheme();
   const { colorScheme } = useMantineColorScheme();
   const { logOut, admin } = useAuthStore();
-
+  const menuItems = [
+    { icon: IconLayoutDashboardFilled, label: t("aside.dashboard"), to: "/" },
+    { icon: IconBooks, label: t("aside.libraries"), to: "/libraries" },
+    { icon: IconBook, label: t("aside.books"), to: "/books" },
+    { icon: IconNote, label: t("aside.notes"), to: "/notes" },
+    { icon: IconPin, label: t("aside.saved"), to: "/saved" },
+    { icon: IconSettings, label: t("aside.settings"), to: "/settings" },
+  ];
   return (
     <Box
       w="20%"
@@ -101,7 +101,7 @@ const Aside = () => {
           style={{ display: "flex", gap: "10px", alignItems: "center" }}
           onClick={() => logOut()}
         >
-          <IconLogout /> <Text>Log Out</Text>
+          <IconLogout /> <Text>{t("aside.logOut")}</Text>
         </Button>
       </Stack>
     </Box>

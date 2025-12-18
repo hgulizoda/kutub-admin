@@ -4,6 +4,7 @@ import NoteCard from "../components/NotesCard";
 import { IconEdit, IconPlus, IconTrash } from "@tabler/icons-react";
 import { useState } from "react";
 import AddNoteModal from "../components/AddNoteModal";
+import { useTranslation } from "react-i18next";
 
 const Notes = () => {
   const { notes, deleteNote } = useNotesStore();
@@ -11,11 +12,11 @@ const Notes = () => {
   const [opened, setOpened] = useState(false);
   const addNote = useNotesStore((state) => state.addNote);
   const [initialValue, setInitialValue] = useState({});
-
+  const { t } = useTranslation();
   return (
     <>
       <Container size="xl">
-        <Text fz={"h2"}>My Notes</Text>
+        <Text fz={"h2"}>{t("notesPage.title")}</Text>
         <Stack w="70%" mt={100} style={{ justifySelf: "center" }}>
           {notes.map((note) => (
             <Flex w={"100%"} justify={"space-between"}>
@@ -50,7 +51,7 @@ const Notes = () => {
           <Flex justify={"space-between"} mt={20}>
             <Button
               variant="outline"
-              w={130}
+              w={200}
               mb={20}
               onClick={() => {
                 setEditId(null);
@@ -58,12 +59,14 @@ const Notes = () => {
               }}
             >
               <IconPlus />
-              <Text fz={14}>Add Note</Text>
+              <Text fz={14}>{t("notesPage.addButton")}</Text>
             </Button>
             <Stack>
-              <Text>Total: {notes.length} tasks</Text>
               <Text>
-                Efficiency:{" "}
+                {t("notesPage.total")} {notes.length} {t("notesPage.tasks")}
+              </Text>
+              <Text>
+                {t("notesPage.efficiency")}{" "}
                 {(
                   notes.filter((item) => item.isDone).length / notes.length
                 ).toFixed(1) * 100}{" "}

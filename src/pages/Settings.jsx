@@ -18,6 +18,7 @@ import { useForm } from "@mantine/form";
 import { useMutation } from "@tanstack/react-query";
 import API from "../api/api";
 import queryClient from "../api/query";
+import { useTranslation } from "react-i18next";
 
 const ContactForm = () => {
   const theme = useMantineTheme();
@@ -53,6 +54,7 @@ const ContactForm = () => {
       console.log("hooray");
     },
   });
+  const { t } = useTranslation();
 
   return (
     <Container
@@ -77,15 +79,15 @@ const ContactForm = () => {
           })}
         >
           <Text ta="center" size="xl" fw={700}>
-            Edit Prodile
+            {t("editProfile.title")}
           </Text>
 
           <Text ta="center" size="sm" c={"white"}>
-            Enter your details below
+            {t("editProfile.subtitle")}
           </Text>
 
           <TextInput
-            label="Name"
+            label={t("editProfile.nameLabel")}
             placeholder="John Doe"
             radius="md"
             size="md"
@@ -93,7 +95,7 @@ const ContactForm = () => {
           />
 
           <TextInput
-            label="Phone"
+            label={t("editProfile.phoneLabel")}
             placeholder="+998 90 123 45 67"
             radius="md"
             size="md"
@@ -107,7 +109,7 @@ const ContactForm = () => {
             type="submit"
             style={{ backgroundColor: theme.other.box4[colorScheme] }}
           >
-            Save
+            {t("editProfile.saveButton")}
           </Button>
         </Stack>
       </Paper>

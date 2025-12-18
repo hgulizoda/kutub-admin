@@ -1,0 +1,57 @@
+{
+  "aside": {
+    "dashboard": "Dashboard",
+    "libraries": "Libraries",
+    "books": "Books",
+    "notes": "Notes",
+    "saved": "Saved",
+    "settings": "Settings",
+    "logOut": "Log Out"
+  },
+  "dashboard": {
+    "mostReadBooks": "Most read books",
+    "haveAGoodDay": "Have a good day",
+    "mostPopularLibraries": "Most popular Libraries",
+    "myNotes": "My notes",
+    "active": "active",
+    "inactive": "inactive",
+    "read": "read"
+  },
+  "libraries": {
+    "title": "Libraries",
+    "all": "All",
+    "active": "Active",
+    "inactive": "Inactive",
+    "activate": "Activate",
+    "deactivate": "Deactivate"
+  },
+  "other": {
+    "noData": "No Data"
+  },
+  "editProfile": {
+    "title": "Edit Profile",
+    "subtitle": "Enter your details below",
+    "nameLabel": "Name",
+    "phoneLabel": "Phone",
+    "saveButton": "Save"
+  },
+  "addNoteModal": {
+    "title": "Add New Note",
+    "noteLabel": "Note Text",
+    "notePlaceholder": "Write your note here...",
+    "importanceLabel": "Importance",
+    "importanceHigh": "High",
+    "importanceMedium": "Medium",
+    "importanceLow": "Low",
+    "cancelButton": "Cancel",
+    "saveButton": "Save",
+    "addButton": "Add Note"
+  },
+  "notesPage": {
+    "title": "My Notes",
+    "addButton": "Add Note",
+    "total": "Total: ",
+    "tasks": "tasks",
+    "efficiency": "Efficiency: "
+  }
+}
