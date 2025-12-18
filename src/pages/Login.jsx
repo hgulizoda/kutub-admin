@@ -16,7 +16,7 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { IconLock, IconMoon, IconSun } from "@tabler/icons-react";
+import { IconCheck, IconLock, IconMoon, IconSun } from "@tabler/icons-react";
 import qodiriy from "../assets/images/abdulla qodiriy.jpg";
 import lib1 from "../assets/images/lib1.jpg";
 import cholpon from "../assets/images/cho'lpon.jpg";
@@ -27,11 +27,10 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import API from "../api/api";
 import { useEffect, useState } from "react";
 import useAuthStore from "../store/useAuthStore";
-import { showNotification } from "@mantine/notifications";
 import { useNavigate } from "react-router-dom";
-
+import queryClient from "../api/query";
 const Login = () => {
-  const { logIn, setAdmin } = useAuthStore();
+  const { logIn, setAdmin, logOut } = useAuthStore();
   const [error, setError] = useState("");
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const navigate = useNavigate();
@@ -44,17 +43,12 @@ const Login = () => {
   });
 
   const mutation = useMutation({
-    mutationFn: async (data) => {
-      return await API.post("/auth/login/", data);
-    },
+    mutationFn: async (data) => API.post("/auth/login/", data),
     onSuccess: (res) => {
-      console.log("Login success:", res.data);
       logIn(res.data);
+      queryClient.invalidateQueries(["admin"]);
     },
-    onError: (err) => {
-      console.log(err.response?.data?.detail);
-      setError(err.response?.data?.detail || "Something went wrong");
-    },
+    onError: (err) => setError(err.response.data.detail),
   });
 
   const { data } = useQuery({
@@ -63,6 +57,10 @@ const Login = () => {
       const res = await API.get("/auth/admin/profile/");
       return res.data;
     },
+    onSuccess: (data) => {
+      setAdmin(data);
+      navigate("/");
+    },
   });
 
   useEffect(() => {
@@ -70,6 +68,8 @@ const Login = () => {
       console.log(data);
       navigate("/");
       setAdmin(data);
+    } else {
+      logOut();
     }
   }, [data]);
 

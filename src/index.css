@@ -5,10 +5,15 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  text-decoration: none;
 }
 html,
 body {
   width: 100vw;
-  min-height: 100vh;
+  min-height: 70vh;
   overflow-x: hidden;
+}
+
+.active {
+  transition: all 0.3s ease-in-out;
 }

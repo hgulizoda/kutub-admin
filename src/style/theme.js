@@ -29,7 +29,7 @@ const theme = createTheme({
     },
     box1: {
       light: "#C5BEAB",
-      dark: "#B3B7BA",
+      dark: "#b3b7baa4",
     },
     box2: {
       light: "#9CA089",
@@ -40,8 +40,12 @@ const theme = createTheme({
       dark: "#262E36",
     },
     box4: {
-      light: "#5D624C",
-      dark: "#D3D1CE",
+      light: "#5d624c83",
+      dark: "#d2cabfc5",
+    },
+    box5: {
+      light: "#5d624c42",
+      dark: "#8c8f84a9",
     },
   },
 });
